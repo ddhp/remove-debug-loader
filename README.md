@@ -1,4 +1,4 @@
-#remove-debug-loader
+# remove-debug-loader
 
 remove [debug](https://github.com/visionmedia/debug) from your code
 
@@ -47,8 +47,9 @@ and debug methods
 debug('some log to log', 'stuff')
 ```
 
-since [debug](https://github.com/visionmedia/debug) is log to stderr by default on server side (see [here](https://github.com/visionmedia/debug#output-streams)), 
-we usually patch debug to an individual module, so you can add extra config to webpack if different log method name is defined
+since [debug](https://github.com/visionmedia/debug) is log to stderr by default on server side (see [here](https://github.com/visionmedia/debug#output-streams)), we usually patch debug to an individual module
+
+so you can add extra config to webpack if different log method name is defined
 
 e.g
 
@@ -71,9 +72,13 @@ set myLog in loader's option `methodName`:
 }
 ```
 
-in this case `myLog('some log to log', 'stuffs')` would be removed but the rest would stay untouched, this might cause error if eslint is applied afterward since myLog is defined but never used, so make sure you use this loader **after** [eslint-loader](https://github.com/MoOx/eslint-loader)
+in this case `myLog('some log to log', 'stuffs')` would be removed but the rest would stay untouched
 
-##License
+this might cause error if eslint is applied afterward since myLog is defined but never used
+
+so make sure you use this loader **after** [eslint-loader](https://github.com/MoOx/eslint-loader)
+
+## License
 
 The MIT License (MIT)
 
