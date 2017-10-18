@@ -8,7 +8,7 @@ $ yarn add remove-debug-loader --dev
 ```
 or
 ```
-$ npm i --save-dev remove-debug-loader`
+$ npm i --save-dev remove-debug-loader
 ```
 
 ## How to use
