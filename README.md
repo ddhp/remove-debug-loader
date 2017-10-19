@@ -72,9 +72,9 @@ set myLog in loader's option `methodName`:
 }
 ```
 
-in this case `myLog('some log to log', 'stuffs')` would be removed but the rest would stay untouched
+in this case line with `myLog` would be removed which means `import patchedToStdout from './patchedToStdout'` would stay untouched
 
-this might cause error if eslint is applied afterward since myLog is defined but never used
+this might cause error if eslint is applied afterward since patchedToStdout is defined but never used
 
 so make sure you use this loader **after** [eslint-loader](https://github.com/MoOx/eslint-loader)
 
