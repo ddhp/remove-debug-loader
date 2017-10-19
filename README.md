@@ -1,6 +1,8 @@
 # remove-debug-loader
 
-remove [debug](https://github.com/visionmedia/debug) from your code
+remove [debug](https://github.com/visionmedia/debug) from your code, by
+- remove `require` and `import` debug
+- remove method name - `debug`'s definition and invocation (name `debug` is default and can be config in loader options)
 
 ## Installation
 ```
@@ -29,13 +31,13 @@ module: {
 
 this would remove these patterns
 
-requiring dependency:
+requiring debug:
 
 ```js
 const debug = require('debug')
 ```
 
-also removes import:
+also support `import` syntax:
 
 ```js
 import debug from 'debug'
@@ -47,7 +49,7 @@ and debug methods
 debug('some log to log', 'stuff')
 ```
 
-since [debug](https://github.com/visionmedia/debug) is log to stderr by default on server side (see [here](https://github.com/visionmedia/debug#output-streams)), we usually patch debug to an individual module
+since [debug](https://github.com/visionmedia/debug) is log to stderr by default on server side (see [here](https://github.com/visionmedia/debug#output-streams)), we usually patch debug to another individual module
 
 so you can add extra config to webpack if different log method name is defined
 
@@ -72,11 +74,19 @@ set myLog in loader's option `methodName`:
 }
 ```
 
-in this case line with `myLog` would be removed which means `import patchedToStdout from './patchedToStdout'` would stay untouched
+in this case, line with `myLog` would be removed which means `import patchedToStdout from './patchedToStdout'` would stay untouched
 
 this might cause error if eslint is applied afterward since patchedToStdout is defined but never used
 
 so make sure you use this loader **after** [eslint-loader](https://github.com/MoOx/eslint-loader)
+
+## Known Issue
+removing multi line debug invocation isn't support yet, i.e
+```js
+debug('a multi-line log message which would break code build',
+      'use remove-debug-loader with precaution')
+```
+
 
 ## License
 
