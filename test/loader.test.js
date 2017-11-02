@@ -307,6 +307,7 @@ test.cb('remove custom method both definition and invocation', t => {
         t.true(subject.indexOf('const myLog') === -1)
         t.true(subject.indexOf("myLog('some log to log from myLog', 'stuffs')") === -1)
         t.true(subject.indexOf("customLog('some log to log from customLog', 'stuffs')") !== -1)
+        t.true(subject.indexOf("mockFunc('this should remain untouched')") !== -1)
         t.end()
       })
     })

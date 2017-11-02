@@ -86,6 +86,9 @@
 const customLog = patchedToStdout('anothernamespace')
 customLog('some log to log from customLog', 'stuffs')
 
+function mockFunc() {}
+mockFunc('this should remain untouched')
+
 
 /***/ })
 /******/ ]);

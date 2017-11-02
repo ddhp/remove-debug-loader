@@ -87,6 +87,9 @@ myLog('some log to log from myLog', 'stuffs')
 const customLog = __WEBPACK_IMPORTED_MODULE_0__patchedToStdout___default()('anothernamespace')
 customLog('some log to log from customLog', 'stuffs')
 
+function mockFunc() {}
+mockFunc('this should remain untouched')
+
 
 /***/ }),
 /* 1 */

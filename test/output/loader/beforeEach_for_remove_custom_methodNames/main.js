@@ -88,6 +88,9 @@
 
 
 
+function mockFunc() {}
+mockFunc('this should remain untouched')
+
 
 /***/ })
 /******/ ]);
