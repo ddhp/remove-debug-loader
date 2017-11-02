@@ -4,7 +4,7 @@
   "description": "webpack loader to remove debug(or any method you defined) from your code",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava --verbose"
   },
   "keywords": [
     "webpack",
@@ -17,5 +17,20 @@
   "license": "MIT",
   "dependencies": {
     "loader-utils": "^1.1.0"
-  }
+  },
+  "devDependencies": {
+    "ava": "^0.23.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.6.2"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.test.js",
+      "!test/fixtures/**/*",
+      "!test/helpers/**/*"
+    ]
+  },
+  "pre-commit": [
+    "test"
+  ]
 }

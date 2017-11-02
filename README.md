@@ -51,7 +51,7 @@ debug('some log to log', 'stuff')
 
 since [debug](https://github.com/visionmedia/debug) is log to stderr by default on server side (see [here](https://github.com/visionmedia/debug#output-streams)), we usually patch debug to another individual module
 
-so you can add extra config to webpack if different log method name is defined
+so you can add extra config to webpack if defining custom log method name and importing patched log library
 
 e.g
 
@@ -62,51 +62,27 @@ const myLog = patchedToStdout('mynamespace')
 myLog('some log to log', 'stuffs')
 ```
 
-set myLog in loader's option `methodName`:
+in this case, we need to remove importing patchedToStdout also `myLog`'s definition and invocation, so set loader's options `methodName` and `moduleName`:
 ```js
 {
   use: [{
     loader: 'remove-debug-loader',
     options: {
-      methodName: 'myLog'
+      moduleName: ['patchedToStdout'],
+      methodName: ['myLog']
     }
   }]
 }
 ```
 
-in this case, line with `myLog` would be removed which means `import patchedToStdout from './patchedToStdout'` would stay untouched
-
-this might cause error if eslint is applied afterward since patchedToStdout is defined but never used
-
-so make sure you use this loader **after** [eslint-loader](https://github.com/MoOx/eslint-loader)
+those 2 options are array, so it supports as much as keyword you want to remove
 
 ## Known Issue
 removing multi line debug invocation isn't support yet, i.e
 ```js
 debug('a multi-line log message which would break code build',
-      'use remove-debug-loader with precaution')
+      'use remove-debug-loader with this precaution')
 ```
 
-
 ## License
-
-The MIT License (MIT)
-
-Copyright (c) 2017 ddhp
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+see LICENSE
