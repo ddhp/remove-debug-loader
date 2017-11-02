@@ -29,8 +29,5 @@
       "!test/fixtures/**/*",
       "!test/helpers/**/*"
     ]
-  },
-  "pre-commit": [
-    "test"
-  ]
+  }
 }
