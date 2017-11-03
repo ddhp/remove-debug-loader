@@ -3,6 +3,7 @@
 remove [debug](https://github.com/visionmedia/debug) from your code, by
 - remove `require` and `import` debug
 - remove method name - `debug`'s definition and invocation (name `debug` is default and can be config in loader options)
+- remove custom modules(when you patched debug library)
 
 ## Installation
 ```
