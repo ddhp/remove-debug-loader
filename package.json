@@ -21,7 +21,8 @@
   "devDependencies": {
     "ava": "^0.23.0",
     "mkdirp": "^0.5.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "webpack": "^3.8.1"
   },
   "ava": {
     "files": [
