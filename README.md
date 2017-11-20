@@ -1,4 +1,7 @@
 # remove-debug-loader
+[![npm Version](https://img.shields.io/npm/v/remove-debug-loader.svg?style=flat-square)](https://www.npmjs.org/package/remove-debug-loader)
+[![Build Status](https://img.shields.io/travis/ddhp/remove-debug-loader/master.svg?style=flat-square)](https://travis-ci.org/ddhp/remove-debug-loader)
+[![Dependency Status](https://dependencyci.com/github/ddhp/remove-debug-loader/badge)](https://dependencyci.com/github/ddhp/remove-debug-loader)
 
 remove [debug](https://github.com/visionmedia/debug) from your code, by
 - remove `require` and `import` debug
