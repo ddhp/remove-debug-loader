@@ -4,7 +4,9 @@
   "description": "webpack loader to remove debug(or any method you defined) from your code",
   "main": "index.js",
   "scripts": {
-    "test": "ava --verbose"
+    "test": "cross-env NODE_ENV=test nyc ava --verbose",
+    "coverage": "nyc report --reporter=lcov",
+    "report": "cross-env NODE_ENV=test nyc ava && yarn run coverage"
   },
   "keywords": [
     "webpack",
@@ -20,7 +22,10 @@
   },
   "devDependencies": {
     "ava": "^0.23.0",
+    "codecov": "^3.0.0",
+    "cross-env": "^5.1.1",
     "mkdirp": "^0.5.1",
+    "nyc": "^11.3.0",
     "rimraf": "^2.6.2",
     "webpack": "^3.8.1"
   },
