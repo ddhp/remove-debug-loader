@@ -5,12 +5,12 @@ function validateInputAsArray(input) {
 
 function requireRegexp(moduleName) {
   const moduleString = validateInputAsArray(moduleName)
-  return new RegExp('.*?require\\(\\s*[\'"](\\./)?(' + moduleString + '|debug)[\'"]\\s*\\).*', 'g')
+  return new RegExp('.*?require\\(\\s*[\'"](\\./|(\\.\\./)*)?(' + moduleString + '|debug)[\'"]\\s*\\).*', 'g')
 }
 
 function importRegexp(moduleName) {
   const moduleString = validateInputAsArray(moduleName)
-  return new RegExp('import\\s{?\\s*.+\\s*}?\\sfrom\\s[\'"](\\./)?(' + moduleString + '|debug)[\'"].*', 'g')
+  return new RegExp('import\\s{?\\s*.+\\s*}?\\sfrom\\s[\'"](\\./|(\\.\\./)*)?(' + moduleString + '|debug)[\'"].*', 'g')
 }
 
 function methodNameRegexp(methodName) {

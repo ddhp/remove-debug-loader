@@ -9,6 +9,20 @@ const loader = require('../index'),
       importRegexp = loader.importRegexp,
       methodNameRegexp = loader.methodNameRegexp
 
+test('importRegexp validate "../"s', t => {
+  t.true(importRegexp().test('import whatever from "debug"'));
+  t.true(importRegexp().test('import whatever from "./debug"'));
+  t.true(importRegexp().test('import whatever from "../debug"'));
+  t.true(importRegexp().test('import whatever from "../../debug"'));
+});
+
+test('require validate "../"s', t => {
+  t.true(requireRegexp().test('const whatever = require("debug")'));
+  t.true(requireRegexp().test('const whatever = require("./debug")'));
+  t.true(requireRegexp().test('const whatever = require("../debug")'));
+  t.true(requireRegexp().test('const whatever = require("../../debug")'));
+});
+
 const removeDebugLoader = path.join(__dirname, '../');
 const OUTPUT_DIR = path.join(__dirname, 'output/loader');
 
