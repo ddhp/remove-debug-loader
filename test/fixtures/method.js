@@ -1,15 +1,17 @@
 // original debug
-const debug = require('debug')('mynamespace')
-debug('some log to log')
-debug()
+const debug = require('debug')('mynamespace');
+
+debug('some log to log');
+debug();
 
 // patched log
-import patchedToStdout from './patchedToStdout'
-const myLog = patchedToStdout('mynamespace')
-myLog('some log to log from myLog', 'stuffs')
+import patchedToStdout from './patchedToStdout';
 
-const customLog = patchedToStdout('anothernamespace')
-customLog('some log to log from customLog', 'stuffs')
+const myLog = patchedToStdout('mynamespace');
+myLog('some log to log from myLog', 'stuffs');
+
+const customLog = patchedToStdout('anothernamespace');
+customLog('some log to log from customLog', 'stuffs');
 
 function mockFunc() {}
-mockFunc('this should remain untouched')
+mockFunc('this should remain untouched');

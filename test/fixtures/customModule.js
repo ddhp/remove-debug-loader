@@ -1,1 +1,1 @@
-module.exports = 'REMOVE_DEBUG_LOADER_customModule'
+module.exports = 'REMOVE_DEBUG_LOADER_customModule';

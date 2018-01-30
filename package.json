@@ -22,8 +22,12 @@
   },
   "devDependencies": {
     "ava": "^0.23.0",
+    "bluebird": "^3.5.1",
     "codecov": "^3.0.0",
     "cross-env": "^5.1.1",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "mkdirp": "^0.5.1",
     "nyc": "^11.3.0",
     "rimraf": "^2.6.2",
