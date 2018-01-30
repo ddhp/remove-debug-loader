@@ -1,7 +1,7 @@
 env:
   node: true
 extends: 
-  - 'airbnb-base'
+  - 'webpack'
 rules:
   no-param-reassign:
     - error 

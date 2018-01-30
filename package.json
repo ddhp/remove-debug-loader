@@ -4,7 +4,7 @@
   "description": "webpack loader to remove debug(or any method you defined) from your code",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test nyc ava --verbose",
+    "test": "eslint ./ && cross-env NODE_ENV=test nyc ava --verbose",
     "coverage": "nyc report --reporter=lcov",
     "report": "cross-env NODE_ENV=test nyc ava && yarn run coverage"
   },
@@ -26,11 +26,10 @@
     "codecov": "^3.0.0",
     "cross-env": "^5.1.1",
     "eslint": "^4.16.0",
-    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-webpack": "^1.2.5",
     "eslint-plugin-import": "^2.8.0",
-    "mkdirp": "^0.5.1",
+    "memory-fs": "^0.4.1",
     "nyc": "^11.3.0",
-    "rimraf": "^2.6.2",
     "webpack": "^3.8.1"
   },
   "ava": {
