@@ -117,7 +117,7 @@ test.cb('remove debug method', (t) => {
   compiler(path.join(__dirname, 'fixtures/method.js'))
     .then((stats) => {
       const subject = stats.toJson().modules[0].source;
-      t.true(subject.indexOf('debug()') === -1);
+      t.false(/\bdebug\(\)/.test(subject));
       t.true(subject.indexOf("debug('some log to log')") === -1);
       t.true(subject.indexOf("myLog('some log to log from myLog', 'stuffs')") !== -1);
       t.end();
@@ -131,7 +131,7 @@ test.cb('remove custom method both definition and invocation', (t) => {
   })
     .then((stats) => {
       const subject = stats.toJson().modules[0].source;
-      t.true(subject.indexOf('debug()') === -1);
+      t.false(/\bdebug\(\)/.test(subject));
       t.true(subject.indexOf('REMOVE_DEBUG_LOADER_patchedToStdout') === -1);
       t.true(subject.indexOf('const myLog') === -1);
       t.true(subject.indexOf("myLog('some log to log from myLog', 'stuffs')") === -1);

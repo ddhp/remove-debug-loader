@@ -4,6 +4,9 @@ const debug = require('debug')('mynamespace');
 debug('some log to log');
 debug();
 
+anythingdebug("test")
+notdebug();
+
 // patched log
 import patchedToStdout from './patchedToStdout';
 

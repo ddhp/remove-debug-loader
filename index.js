@@ -14,9 +14,14 @@ function importRegexp(moduleName) {
   return new RegExp(`import\\s{?\\s*.+\\s*}?\\sfrom\\s['"](\\./|(\\.\\./)*)?(${moduleString}|debug)['"].*`, 'g');
 }
 
-function methodNameRegexp(methodName) {
+function methodInvocationRegexp(methodName) {
   const methodString = validateInputAsArray(methodName);
-  return new RegExp(`.*(${methodString}|debug)(\\(.*?\\)|\\s?=\\s?).*`, 'g');
+  return new RegExp(`\\b(?:${methodString}|debug)\\(.*\\);?`, 'g');
+}
+
+function methodDefinitionRegexp(methodName) {
+  const methodString = validateInputAsArray(methodName);
+  return new RegExp(`\\b((?:var|const|let|,)\\s){0,1}(?:${methodString}|debug)\\s?=\\s?.*(,|;)?`, 'g');
 }
 
 function replaceWithRegexp(source, regexp) {
@@ -35,11 +40,13 @@ exports = function loader(source) {
   return replaceWithRegexps(source, [
     requireRegexp(moduleName),
     importRegexp(moduleName),
-    methodNameRegexp(methodName),
+    methodInvocationRegexp(methodName),
+    methodDefinitionRegexp(methodName),
   ]);
 };
 
-exports.methodNameRegexp = methodNameRegexp;
+exports.methodInvocationRegexp = methodInvocationRegexp;
+exports.methodDefinitionRegexp = methodDefinitionRegexp;
 exports.requireRegexp = requireRegexp;
 exports.importRegexp = importRegexp;
 module.exports = exports;
