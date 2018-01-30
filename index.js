@@ -20,7 +20,7 @@ function methodNameRegexp(methodName) {
 }
 
 function replaceWithRegexp(source, regexp) {
-  return source.replace(regexp, '\n');
+  return source.replace(regexp, '');
 }
 
 function replaceWithRegexps(source, regexps) {

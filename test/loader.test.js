@@ -20,13 +20,13 @@ test('require validate "../"s', (t) => {
 });
 
 test('remove require debug(var)', (t) => {
-  t.is(loader("var d = require('debug')"), '\n');
-  t.is(loader('var d = require("debug")'), '\n');
+  t.is(loader("var d = require('debug')"), '');
+  t.is(loader('var d = require("debug")'), '');
 });
 
 test('remove require debug(const)', (t) => {
-  t.is(loader("const d = require('debug')"), '\n');
-  t.is(loader('const d = require("debug")'), '\n');
+  t.is(loader("const d = require('debug')"), '');
+  t.is(loader('const d = require("debug")'), '');
 });
 
 test('won\'t remove other requires', (t) => {
