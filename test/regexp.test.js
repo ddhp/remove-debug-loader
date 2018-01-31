@@ -7,9 +7,6 @@ const { methodInvocationRegexp, methodDefinitionRegexp } = loader;
 const invocationRegexp = methodInvocationRegexp(['debug']);
 const definitionRegexp = methodDefinitionRegexp(['debug']);
 
-const file = fs.readFileSync(path.resolve(__dirname, './fixtures/multiline.js'), 'utf8');
-console.log(file);
-
 test('methodInvocationRegexp', (t) => {
   t.false(methodInvocationRegexp().test('  debuganything'));
   t.is('  debug("test")'.replace(invocationRegexp, ''), '  ');
