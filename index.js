@@ -16,7 +16,7 @@ function importRegexp(moduleName) {
 
 function methodInvocationRegexp(methodName) {
   const methodString = validateInputAsArray(methodName);
-  return new RegExp(`\\b(?:${methodString}|debug)\\(.*\\);?`, 'g');
+  return new RegExp(`(?:\\b.*\\.)?\\b(?:${methodString}|debug)\\(.*\\)(?:;|\\b)?`, 'g');
 }
 
 function methodDefinitionRegexp(methodName) {

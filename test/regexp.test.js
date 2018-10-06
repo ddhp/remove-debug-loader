@@ -35,4 +35,8 @@ test('methodInvocationRegexp', (t) => {
   console.log(methodDefinitionRegexp().exec('const debug=anything;'));
   t.is('const debug=anything;'.replace(definitionRegexp, ''), '');
   t.is('  const debug=anything;'.replace(definitionRegexp, ''), '  ');
+
+  t.true(methodInvocationRegexp().test('this.debug("foo")'));
+  console.log(methodInvocationRegexp().exec('this.debug("foo")'))
+  t.is('this.debug("foo")'.replace(methodInvocationRegexp(), ''), '');
 });
