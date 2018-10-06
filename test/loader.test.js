@@ -120,6 +120,8 @@ test.cb('remove debug method', (t) => {
       t.false(/\bdebug\(\)/.test(subject));
       t.true(subject.indexOf("debug('some log to log')") === -1);
       t.true(subject.indexOf("myLog('some log to log from myLog', 'stuffs')") !== -1);
+      t.true(subject.indexOf("this.debug = require('debug')();") === -1);
+      t.true(subject.indexOf("this.debug('should be removed');") === -1);
       t.end();
     });
 });
